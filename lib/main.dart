@@ -18,14 +18,48 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      
+      home: const SplashScreen(),
       routes: {
-        '/': (context) => BookListScreen(),
+        '/home': (context) => BookListScreen(),
         '/search': (context) => SearchPage(),
       },
-
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => BookListScreen(),
+      ),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/home');
+    });
+
+    return Scaffold(
+      backgroundColor: Colors.deepPurple,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'images/logo.png',
+              height: 150,
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Book Discovery App',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
