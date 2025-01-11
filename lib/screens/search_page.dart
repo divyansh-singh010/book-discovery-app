@@ -56,7 +56,6 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Search Input Field
             TextField(
               controller: _searchController,
               decoration: InputDecoration(
@@ -78,11 +77,9 @@ class _SearchPageState extends State<SearchPage> {
             ),
             const SizedBox(height: 16),
 
-            // Display Loading Indicator
             if (isLoading)
               Center(child: CircularProgressIndicator()),
 
-            // Display Error Message
             if (errorMessage.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
@@ -92,7 +89,6 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
 
-            // Display Search Results
             if (searchResults.isNotEmpty)
               Expanded(
                 child: ListView.builder(

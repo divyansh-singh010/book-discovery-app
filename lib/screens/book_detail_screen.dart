@@ -11,14 +11,6 @@ class BookDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(book.title),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.share),
-            onPressed: () {
-              // Implement share functionality
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

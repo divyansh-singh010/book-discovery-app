@@ -12,7 +12,7 @@ class _BookListScreenState extends State<BookListScreen> {
   List<Book> books = [];
   int page = 1;
   bool isLoading = false;
-  bool hasMore = true; // To track if more data is available
+  bool hasMore = true; 
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -20,7 +20,6 @@ class _BookListScreenState extends State<BookListScreen> {
     super.initState();
     fetchBooks();
 
-    // Add a listener to detect when the user scrolls to the bottom
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent &&
@@ -34,20 +33,15 @@ class _BookListScreenState extends State<BookListScreen> {
   Future<void> fetchBooks() async {
     setState(() => isLoading = true);
     try {
-      print("Fetching books for page $page");
       final newBooks = await ApiService().fetchBooks(page);
-      print("Books fetched: ${newBooks.length} books");
       setState(() {
         books.addAll(newBooks);
         page++;
         if (newBooks.isEmpty) {
           hasMore = false;
-          print("No more books available.");
         }
-        print("Total books: ${books.length}");
       });
     } catch (e) {
-      print("Error occurred while fetching books: $e");
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error: Unable to fetch books.')));
     } finally {
@@ -57,7 +51,7 @@ class _BookListScreenState extends State<BookListScreen> {
 
   @override
   void dispose() {
-    _scrollController.dispose(); // Clean up the controller
+    _scrollController.dispose(); 
     super.dispose();
   }
 

@@ -20,33 +20,29 @@ class Book {
   });
 
   factory Book.fromJson(Map<String, dynamic> json) {
-    // Safely handle the authors list, defaulting to an empty list if null
     List<Author> authorsList = json['authors'] != null
         ? (json['authors'] as List)
             .map((authorJson) => Author.fromJson(authorJson))
             .toList()
         : [];
 
-    // Safely handle the formats field, defaulting to an empty map if null
     Map<String, String> formatsMap = json['formats'] != null
         ? Map<String, String>.from(json['formats'])
         : {};
 
-    // Safely handle the imageUrl, using a default value if the key is missing
     String imageUrl = formatsMap['image/jpeg'] ?? 'https://default-image-url.com';
 
-    // Safely handle nullable fields like subjects, languages, and downloadCount
     return Book(
       id: json['id'] as int,
       title: json['title'] as String,
       authors: authorsList,
       formats: formatsMap,
       imageUrl: imageUrl,
-      subjects: List<String>.from(json['subjects'] ?? []), // Default to empty list if null
-      languages: List<String>.from(json['languages'] ?? []), // Default to empty list if null
+      subjects: List<String>.from(json['subjects'] ?? []),
+      languages: List<String>.from(json['languages'] ?? []),
       downloadCount: json['download_count'] != null
           ? json['download_count'] as int
-          : 0, // Default to 0 if null
+          : 0, 
     );
   }
 }

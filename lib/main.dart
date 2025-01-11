@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // Define named routes
+      
       routes: {
         '/': (context) => BookListScreen(),
         '/search': (context) => SearchPage(),
       },
-      // Handle unknown routes
+
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => BookListScreen(),
       ),
