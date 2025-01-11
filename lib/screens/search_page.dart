@@ -118,7 +118,7 @@ class _SearchPageState extends State<SearchPage> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          'Authors: ${book.authors.join(", ")}',
+                          'Authors: ${book.authors.map((author) => author.name).join(", ")}',
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                         trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
@@ -133,6 +133,14 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     );
                   },
+                ),
+              ),
+
+            if (searchResults.isEmpty && !isLoading && errorMessage.isEmpty)
+              Center(
+                child: Text(
+                  'No book found',
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
                 ),
               ),
           ],
