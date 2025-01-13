@@ -30,7 +30,7 @@ class Book {
         ? Map<String, String>.from(json['formats'])
         : {};
 
-    String imageUrl = formatsMap['image/jpeg'] ?? 'https://default-image-url.com';
+    String imageUrl = formatsMap['image/jpeg'] ?? 'https://cdn-icons-png.flaticon.com/512/2436/2436702.png';
 
     return Book(
       id: json['id'] as int,
